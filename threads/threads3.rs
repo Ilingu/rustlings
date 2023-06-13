@@ -34,7 +34,7 @@ fn send_tx(q: Queue, tx: mpsc::Sender<u32>) -> () {
         for val in &qc1.first_half {
             println!("sending {:?}", val);
             trans1.clone().send(*val).unwrap();
-            thread::sleep(Duration::from_secs(1));
+            // thread::sleep(Duration::from_secs(1)); --> this was quite annoying because we have to wait the program when doing rustling watch
         }
     });
 
@@ -42,7 +42,7 @@ fn send_tx(q: Queue, tx: mpsc::Sender<u32>) -> () {
         for val in &qc2.second_half {
             println!("sending {:?}", val);
             trans2.clone().send(*val).unwrap();
-            thread::sleep(Duration::from_secs(1));
+            // thread::sleep(Duration::from_secs(1)); --> this was quite annoying because we have to wait the program when doing rustling watch
         }
     });
 }
